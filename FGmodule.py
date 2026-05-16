@@ -234,14 +234,15 @@ class FGmodule:
     def __get_composition_factors_res_proj(self,i):
         res_factors = [0] * (self.p-1)
         if (i == 1):
-            res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(1))]
-            res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(1))]
+            res_factors = [x+2*y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(1))]
             res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(self.p-2))]
-        if (i == self.p):
+        elif (i == self.p):
             res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(self.p))]
-        if (1 < i < self.p):
-            res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(i))]
-            res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(i))]
+        elif (i == self.p-1):
+            res_factors = [x+2*y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(self.p-1))]
+            res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(2))]
+        elif (1 < i < self.p-1):
+            res_factors = [x+2*y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(i))]
             res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(self.p+1-i))]
             res_factors = [x+y for x,y in zip(res_factors,self.__get_composition_factors_res_simple(self.p-1-i))]
         return res_factors
@@ -401,9 +402,12 @@ class FGmodule:
             module_factors = [0] * (self.p)
             if (module == 1):
                 module_factors[0] = 2
-                module_factors[self.p-2-1] = 1
+                module_factors[self.p-2-1] += 1
             elif (module == self.p):
-                module_factors[self.p-1] = 1
+                module_factors[self.p-1] += 1
+            elif (module == self.p-1):
+                module_factors[self.p-1-1] += 2
+                module_factors[2-1] += 1
             else:
                 module_factors[module-1] += 2
                 module_factors[self.p+1-module-1] += 1

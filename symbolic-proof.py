@@ -6,6 +6,8 @@
 This file contains functions related to the modular representation theory
 of the group G = SL_2(F_p).
 
+For theoretical details, see: https://arxiv.org/abs/2503.07581
+
 """
 
 '''

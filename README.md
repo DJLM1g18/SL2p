@@ -76,6 +76,20 @@ The file `sample.py` simply contains example usage of the above `FGmodule` and `
 
 ### `symbolic-proof.py`
 
-The file `symbolic-proof.py` 
+The file `symbolic-proof.py` was used to derive [Proposition 3.16](https://arxiv.org/abs/2503.07581). This result explicitly describes the Green correspondent of a given non-projective indecomposable
+F[G] module. Describing this direction of the Green correspondence bijection involved many case distinctions (about 60), and so rather than check all 60 by hand - I found a way to enumerate the
+cases, the results into a table!
 
-The rest of this readme is todo.
+### `cabt.py`
+
+Let c_{a,b,t} denote how many times the simple F[G] module V_t occurs as a composition factor of the Green correspondent of U_{a,b} (0 <= a <= p-2, 1 <= b <= p-1). Then,
+[Corollary 3.18](https://arxiv.org/abs/2503.07581) gives an explicit formula for c_{a,b,t}. On the other hand, the above `FGmodule` and `FBmodule` frameworks allow us
+to manually compute the c_{a,b,t} by:
+1. Defining `U = FBmodule(p, [ [a,b] ])`.
+2. Computing `M = U.ind()`.
+3. Obtaining the unique non-projective indecomposable summand of `M` (for example, you can do `non_projective = list(M.get_decomposition()[1].keys())[0]`).
+4. Then `cabt = (FGmodule(p [non_projective])).get_composition_factors()[t-1]`.
+
+For a prime odd prime p, this file simply enumerates c_{a,b,t} using both Corollary 3.18 and manual computation, and verifies that indeed, both methods agree.
+The code as written is O(p^3): I think I can make it O(p^2), and I may come back to do this. But for now, I have tested primes up to 31, and indeed,
+both methods agree, as expected.

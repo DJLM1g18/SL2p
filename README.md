@@ -7,6 +7,7 @@ field of characteristic p > 2, and B is the Borel subgroup of upper triangular m
 
 The file `FBmodule.py` contains the class `FBmodule` which provides the user a mechanism to define F[B] modules. Defining a new F[B] module is as simple as:
 ```python
+from FBmodule import FBmodule
 # You can choose whatever odd prime you'd like to consider
 p = 11
 # The indecomposable modules for F[B] are of the form
@@ -35,6 +36,7 @@ will happen.
 
 The file `FGmodule.py` contains the class `FGmodule` which provides the user a mechanism to define F[G] modules. Defining a new F[G] module is as simple as:
 ```python
+from FGmodule import FGmodule
 # You can choose whatever odd prime you'd like to consider
 p = 11
 # There are two different parameterisation regimes for the indecomposable modules for G.

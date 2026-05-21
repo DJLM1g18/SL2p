@@ -80,7 +80,7 @@ The file `sample.py` simply contains example usage of the above `FGmodule` and `
 
 The file `symbolic-proof.py` was used to derive [Proposition 3.16](https://arxiv.org/abs/2503.07581). This result explicitly describes the Green correspondent of a given non-projective indecomposable
 F[G] module. Describing this direction of the Green correspondence bijection involved many case distinctions (about 60), and so rather than check all 60 by hand - I found a way to enumerate the
-cases, the results into a table!
+cases, and then put the results into a table!
 
 ### `cabt.py`
 
